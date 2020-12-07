@@ -1,0 +1,16 @@
+graphql:
+  packages:
+    - "com.prueba.graphkt"
+#spring:
+#  r2dbc:
+#    initialization-mode: always
+#    url: r2dbc:mysql://localhost:3306/graphql-kt?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    username: graphql-kt-user
+#    password: graphql-kt-user
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: DEBUG
