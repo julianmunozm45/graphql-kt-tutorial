@@ -24,14 +24,13 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.h2database:h2")
-	runtimeOnly("io.r2dbc:r2dbc-h2")
-//	runtimeOnly("dev.miku:r2dbc-mysql")
-//	runtimeOnly("mysql:mysql-connector-java")
+	runtimeOnly("io.r2dbc:r2dbc-h2") // h2 database r2dbc driver
+	runtimeOnly("com.h2database:h2") // h2 database
+//	runtimeOnly("dev.miku:r2dbc-mysql") // MySQL database r2dbc driver
+//	runtimeOnly("mysql:mysql-connector-java") // MySQL database
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
-
-	implementation("com.expediagroup", "graphql-kotlin-spring-server", "3.6.8")
+	implementation("com.expediagroup", "graphql-kotlin-spring-server", "3.6.8") // graphql-kotlin
 }
 
 tasks.withType<Test> {
