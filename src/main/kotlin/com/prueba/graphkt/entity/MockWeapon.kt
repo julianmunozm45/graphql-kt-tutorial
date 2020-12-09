@@ -1,9 +1,6 @@
 package com.prueba.graphkt.entity
 
-import org.springframework.data.annotation.Id
-
-data class Weapon(
-        @Id
+data class MockWeapon(
         val id: Long,
         val name: String,
 )

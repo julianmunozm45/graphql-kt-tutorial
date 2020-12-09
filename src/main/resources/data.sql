@@ -10,4 +10,4 @@ INSERT INTO weapon (id, name) VALUES
 (7, 'Gurthang'),
 (8, 'Marsil'),
 (9, 'Claymore'),
-(10,'"Morning star');
+(10,'Morning star');
