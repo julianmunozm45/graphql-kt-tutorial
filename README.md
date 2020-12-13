@@ -58,6 +58,24 @@ spring:
 ```
 
 The project uses the schema.sql, and the data.sql files in the classpath to bootstrap database data.
+To load this files in the database, we have to create a db initializer class and specify of our
+sql files.
+
+``` kotlin
+@Configuration
+class DBInitializer {
+    @Bean
+    fun initializer(connectionFactory: ConnectionFactory): ConnectionFactoryInitializer {
+        val initializer = ConnectionFactoryInitializer()
+        initializer.setConnectionFactory(connectionFactory)
+        val populator = CompositeDatabasePopulator()
+        populator.addPopulators(ResourceDatabasePopulator(ClassPathResource("schema.sql")))
+        populator.addPopulators(ResourceDatabasePopulator(ClassPathResource("data.sql")))
+        initializer.setDatabasePopulator(populator)
+        return initializer
+    }
+}
+```
 
 ## Queries
 Let's get to the actual code now. We start with a basic query that fetches a mock weapon database.
