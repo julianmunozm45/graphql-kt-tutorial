@@ -233,12 +233,12 @@ in three layer architecture. For a tree layer architecture setup, we can move th
 ``` kotlin
 @Service
 class WeaponService(private var weaponRepository: WeaponRepository) {
-    fun findAll(): Mono<List<Weapon>> {
-        return weaponRepository.findAll().collectList()
+    suspend fun findAll(): List<Weapon> {
+        return weaponRepository.findAll().collectList().awaitFirstOrDefault(listOf())
     }
 
-    fun findById(id: Long): Mono<Weapon> {
-        return weaponRepository.findById(id)
+    suspend fun findById(id: Long): Weapon? {
+        return weaponRepository.findById(id).awaitSingle()
     }
 }
 ```
@@ -249,12 +249,12 @@ Our query class be the following.
 @Component
 class WeaponQuery(private val weaponService: WeaponService) : Query {
 
-    suspend fun weapons(): List<Weapon>? {
-        return weaponService.findAll().awaitFirst()
+    suspend fun weapons(): List<Weapon> {
+        return weaponService.findAll()
     }
 
     suspend fun weapon(id: Long): Weapon? {
-        return weaponService.findById(id).awaitSingle()
+        return weaponService.findById(id)
     }
 }
 ```
